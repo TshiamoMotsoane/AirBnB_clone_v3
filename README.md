@@ -156,7 +156,122 @@ No known bugs at this time.
 ## Authors
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
-Tshiamo Motsoane - [Github](https://github.com/tshiamomotsoane). / [Twitter](https://twitter.com/residenttechgal).
+
 Second part of Airbnb: Joann Vuong
 ## License
 Public Domain. No copy write protection. 
+
+# AirBnB clone - RESTful API
+REST API is a software architectural style for Backend.
+REST = “REpresentational State Transfer”. API = Application Programming Interface
+Its purpose is to induce performance, scalability, simplicity, modifiability, visibility, portability, and reliability.
+REST API is Resource-based, a resource is an object and can be access by a URI. An object is “displayed”/transferred via a representation (typically JSON). HTTP methods will be actions on a resource.
+
+#### There are 6 constraints:
+## Uniform Interface:
+* Define the interface between client-server
+* Simple and can be split in small parts
+# HTTP verbs
+- GET:
+      - Read representation of a resource or a list of resources
+- POST:
+      - Create a new resource
+- PUT:
+      - Update an existing resource
+- DELETE:
+        - Remove an existing resource
+# URIs - resource name
+A resource representation is accessible by a URI:
+- GET /users: path for listing all user resources
+- GET /users/12: path for the user id = 12
+- GET /users/12/addresses: path for listing all addresses of the user id = 12
+- POST /users: path for creating a user resource
+- PUT /users/12: path for updating the user id = 12
+- DELETE /users/12/addresses/2: path for deleting the address id = 2 of the user id = 12
+# HTTP Response
+In the HTTP Response, the client should verify the information of two things:
+* status code: result of the action
+* body: JSON or XML representation of resources
+Some important status code:
+- 200: OK
+- 201: created => after a POST request
+- 204: no content => can be return after a DELETE request
+- 400: bad request => the server doesn’t understand the request
+- 401: unauthorized => client user can’t be identified
+- 403: forbidden => client user is identified but not allowed to access a resource
+- 404: not found => resource doesn’t exist
+- 500: internal server error
+## Statless
+The server is independent of the client. The server doesn’t store user client information/state. Each request contains enough context to process it (HTTP Headers, etc.)
+Some authentication systems like OAuth have to store information on the server side but they do it with REST API design.teless:
+## Cacheable
+All server responses (resource representation) are cacheable:
+- Explicit
+- Implicit
+- Negotiated
+Caches are here to improve performances. In a REST API, clients don’t care about the caching strategy, if the resource representation comes from a cache or from a database…
+## Client-Server
+REST API is designed to separate Client from the Server. The server doesn’t know who is talking to it. Clients are not concerned with data storage => the portability of client code is improved. Servers are not concerned with the user interface or user state so that servers can be simpler and more scalable
+## Layered System
+Client can’t assume direct connection to server. Intermediary servers may improve system scalability by enabling load-balancing and by providing shared caches. Layers may also enforce security policies.
+## Code on Demand (optional)
+Server can temporarily:
+- Transfer logic to client
+- Allow client to execute logic
+- Example: JavaScript
+
+## Table of Contents
+* [Project Overview](#project-overview)
+* [Installation](#installation)
+* [Usage](#usage)
+* [API Endpoints](#api-endpoints)
+* [Authentication](#authentication)
+* [Authors](#authors)
+* [License](#license)
+
+## Project Overview
+This project is a RESTful API for an AirBnB clone. The API allows users to interact with the application programmatically by performing CRUD (Create, Read, Update, Delete) operations on various resources such as users, places, reviews, and more.
+
+## Installation
+* Clone this repository: `git clone "https://github.com/tshaimomotsoane/AirBnB_clone_v3.git"`
+* Access AirBnB directory: `cd AirBnB_clone_v3`
+* Set up a virtual environment: `python3 -m venv venv'followed by` followed by `source venv/bin/activate`
+* Iinstall the dependencies: `pip install -r requirements.txt`
+
+ ## Usage
+ * Start the API server: `python3 -m api.v1.app`
+ * The API will be accessible at `http://localhost:5000.`
+
+## API Endpoints
+The API provides the following endpoints:
+# Users
+* GET /api/v1/users: List all users
+* GET /api/v1/users/<user_id>: Retrieve a user by ID
+* POST /api/v1/users: Create a new user
+* PUT /api/v1/users/<user_id>: Update a user
+* DELETE /api/v1/users/<user_id>: Delete a user
+# Places
+* GET /api/v1/places: List all places
+* GET /api/v1/places/<place_id>: Retrieve a place by ID
+* POST /api/v1/places: Create a new place
+* PUT /api/v1/places/<place_id>: Update a place
+* DELETE /api/v1/places/<place_id>: Delete a place
+# Reviews
+* GET /api/v1/reviews: List all reviews
+* GET /api/v1/reviews/<review_id>: Retrieve a review by ID
+* POST /api/v1/reviews: Create a new review
+* PUT /api/v1/reviews/<review_id>: Update a review
+* DELETE /api/v1/reviews/<review_id>: Delete a review
+For a complete list of endpoints, refer to the API documentation.
+
+## Authentication
+The API uses token-based authentication. To access protected routes, include the token in the Authorization header:
+* Authorization: Bearer <your-token>
+
+## Authors
+Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
+Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
+Tshiamo Motsoane - [Github](https://github.com/tshiamomotsoane). / [Twitter](https://twitter.com/residenttechgal).
+Second part of Airbnb: Joann Vuong
+## License
+Public Domain. No copy write protection.
